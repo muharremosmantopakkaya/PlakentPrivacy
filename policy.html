@@ -5,62 +5,359 @@
   <title>Gizlilik Politikası – Plakent</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;line-height:1.6;color:#0f172a;background:#fff;margin:0;padding:24px;max-width:920px}
-    h1,h2{color:#111827;margin:16px 0}
-    code,pre{background:#f3f4f6;padding:2px 6px;border-radius:4px}
-    a{color:#2563eb;text-decoration:none}
-    a:hover{text-decoration:underline}
-    .muted{color:#6b7280}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.7;
+      color: #1e293b;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      padding: 40px 40px 60px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transform: rotate(45deg);
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 150px;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header .date {
+      font-size: 1rem;
+      opacity: 0.9;
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content {
+      padding: 40px;
+    }
+
+    .intro {
+      font-size: 1.1rem;
+      color: #475569;
+      margin-bottom: 40px;
+      padding: 24px;
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+      border-radius: 16px;
+      border-left: 4px solid #3b82f6;
+    }
+
+    .section {
+      margin-bottom: 36px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .section:nth-child(2) { animation-delay: 0.1s; }
+    .section:nth-child(3) { animation-delay: 0.2s; }
+    .section:nth-child(4) { animation-delay: 0.3s; }
+    .section:nth-child(5) { animation-delay: 0.4s; }
+    .section:nth-child(6) { animation-delay: 0.5s; }
+    .section:nth-child(7) { animation-delay: 0.6s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section h2::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .section ul {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .section li {
+      margin-bottom: 12px;
+      padding-left: 24px;
+      position: relative;
+      color: #475569;
+      transition: transform 0.2s ease;
+    }
+
+    .section li:hover {
+      transform: translateX(4px);
+    }
+
+    .section li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #3b82f6;
+      font-weight: bold;
+      transition: transform 0.2s ease;
+    }
+
+    .section li:hover::before {
+      transform: translateX(4px);
+    }
+
+    .section p {
+      color: #475569;
+      margin-bottom: 16px;
+    }
+
+    strong {
+      color: #1e293b;
+      font-weight: 600;
+    }
+
+    a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    a:hover {
+      background: #eff6ff;
+      transform: translateY(-1px);
+    }
+
+    .contact-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      padding: 32px;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      margin-top: 32px;
+    }
+
+    .contact-section h2 {
+      color: #1e293b;
+      margin-bottom: 16px;
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      padding: 12px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease;
+      border: 1px solid #e2e8f0;
+    }
+
+    .contact-email:hover {
+      box-shadow: 0 8px 25px -8px rgba(0, 0, 0, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      padding: 24px 40px;
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      color: #64748b;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+      margin: 32px 0;
+    }
+
+    @media (max-width: 768px) {
+      .header, .content {
+        padding: 24px;
+      }
+      
+      .header h1 {
+        font-size: 2rem;
+      }
+      
+      .intro-highlights {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .highlight {
+        text-align: center;
+      }
+      
+      .contact-section {
+        padding: 24px;
+      }
+      
+      .footer {
+        padding: 20px 24px;
+      }
+    }
+
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+    }
   </style>
-  </head>
+</head>
 <body>
-  <h1>Gizlilik Politikası</h1>
-  <p class="muted">Son güncelleme: 12 Eylül 2025</p>
+  <div class="container">
+    <div class="header">
+      <h1>Gizlilik Politikası</h1>
+      <div class="date">Son güncelleme: 12 Eylül 2025</div>
+    </div>
 
-  <p>Bu gizlilik politikası, <strong>Plakent</strong> (bundan sonra “Uygulama”) içinde işlenen kişisel/kişisel olmayan verilerin
-  hangi amaçlarla ve nasıl kullanıldığını açıklar.</p>
+    <div class="content">
+      <div class="intro">
+        Bu gizlilik politikası, <strong>Plakent</strong> (bundan sonra "Uygulama") içinde işlenen 
+        kişisel/kişisel olmayan verilerin hangi amaçlarla ve nasıl kullanıldığını açıklar.
+      </div>
 
-  <h2>Topladığımız Veriler</h2>
-  <ul>
-    <li><strong>Kullanıcı adı (opsiyonel):</strong> Uygulama içi skor tablosu ve kişiselleştirme için kullanıcı tarafından girilebilir. Boş bırakılabilir.</li>
-    <li><strong>Quiz verileri:</strong> Doğru/yanlış cevaplar, toplam skor, ilerleme ve başarı oranları.</li>
-    <li><strong>Cihaz verileri:</strong> Reklam/analitik SDK’ları kullanılmadığından cihaz kimliği, konum, kişi listesi vb. toplanmaz.</li>
-  </ul>
+      <div class="section">
+        <h2>Topladığımız Veriler</h2>
+        <ul>
+          <li><strong>Kullanıcı adı (opsiyonel):</strong> Uygulama içi skor tablosu ve kişiselleştirme için kullanıcı tarafından girilebilir. Boş bırakılabilir.</li>
+          <li><strong>Quiz verileri:</strong> Doğru/yanlış cevaplar, toplam skor, ilerleme ve başarı oranları.</li>
+          <li><strong>Cihaz verileri:</strong> Reklam/analitik SDK'ları kullanılmadığından cihaz kimliği, konum, kişi listesi vb. toplanmaz.</li>
+        </ul>
+      </div>
 
-  <h2>İşleme Amaçları</h2>
-  <ul>
-    <li>Uygulama işlevselliği (skor kaydı, ilerleme takibi, liderlik/puanlama).</li>
-    <li>Hata giderme ve güvenilirlik (sınırlı teknik kayıtlara başvurulabilir).</li>
-  </ul>
+      <div class="section">
+        <h2>İşleme Amaçları</h2>
+        <ul>
+          <li>Uygulama işlevselliği (skor kaydı, ilerleme takibi, liderlik/puanlama).</li>
+          <li>Hata giderme ve güvenilirlik (sınırlı teknik kayıtlara başvurulabilir).</li>
+        </ul>
+      </div>
 
-  <h2>Veri Saklama ve Güvenlik</h2>
-  <ul>
-    <li>Veriler <strong>Supabase</strong> üzerinde saklanır. Aktarım sırasında TLS ile şifrelenir.</li>
-    <li>Yetkisiz erişimi önlemek için erişim kontrolleri uygulanır.</li>
-    <li>Skor/ilerleme verileri aktif kullanım süresince saklanır; istek üzerine silinir.</li>
-  </ul>
+      <div class="section">
+        <h2>Veri Saklama ve Güvenlik</h2>
+        <ul>
+          <li>Veriler <strong>Supabase</strong> üzerinde saklanır. Aktarım sırasında TLS ile şifrelenir.</li>
+          <li>Yetkisiz erişimi önlemek için erişim kontrolleri uygulanır.</li>
+          <li>Skor/ilerleme verileri aktif kullanım süresince saklanır; istek üzerine silinir.</li>
+        </ul>
+      </div>
 
-  <h2>Üçüncü Taraflarla Paylaşım</h2>
-  <p>Veriler <strong>satılmaz veya üçüncü taraflarla pazarlama amacıyla paylaşılmaz</strong>. Yalnızca hizmeti sağlamak için gerekli barındırma/altyapı sağlayıcıları (Supabase vb.) ile sınırlı teknik işleme yapılır.</p>
+      <div class="section">
+        <h2>Üçüncü Taraflarla Paylaşım</h2>
+        <p>Veriler <strong>satılmaz veya üçüncü taraflarla pazarlama amacıyla paylaşılmaz</strong>. Yalnızca hizmeti sağlamak için gerekli barındırma/altyapı sağlayıcıları (Supabase vb.) ile sınırlı teknik işleme yapılır.</p>
+      </div>
 
-  <h2>Haklarınız</h2>
-  <ul>
-    <li>Verilerinize erişme, düzeltme veya silme talep etme hakkınız vardır.</li>
-    <li>Silme talebi için aşağıdaki iletişim adresinden bize ulaşabilirsiniz. Makul süre içinde yanıtlanır.</li>
-  </ul>
+      <div class="section">
+        <h2>Haklarınız</h2>
+        <ul>
+          <li>Verilerinize erişme, düzeltme veya silme talep etme hakkınız vardır.</li>
+          <li>Silme talebi için aşağıdaki iletişim adresinden bize ulaşabilirsiniz. Makul süre içinde yanıtlanır.</li>
+        </ul>
+      </div>
 
-  <h2>Çocukların Gizliliği</h2>
-  <p>Uygulama 13 yaş altına özel olarak pazarlanmaz. Ebeveyn izni olmaksızın çocuklardan bilerek kişisel veri toplamamaya özen gösteririz.</p>
+      <div class="section">
+        <h2>Çocukların Gizliliği</h2>
+        <p>Uygulama 13 yaş altına özel olarak pazarlanmaz. Ebeveyn izni olmaksızın çocuklardan bilerek kişisel veri toplamamaya özen gösteririz.</p>
+      </div>
 
-  <h2>Değişiklikler</h2>
-  <p>Bu politika zaman zaman güncellenebilir. Önemli değişiklikleri uygulama içinden veya bu sayfa üzerinden duyururuz.</p>
+      <div class="section">
+        <h2>Değişiklikler</h2>
+        <p>Bu politika zaman zaman güncellenebilir. Önemli değişiklikleri uygulama içinden veya bu sayfa üzerinden duyururuz.</p>
+      </div>
 
-  <h2>İletişim</h2>
-  <p>Sorularınız veya silme talepleriniz için: <a href="mailto:plakentapp@gmail.com">plakentapp@gmail.com</a></p>
+      <div class="divider"></div>
 
-  <hr>
-  <p class="muted">Bu sayfa yalnızca bilgilendirme amaçlıdır ve uygulamanın güncel özelliklerine göre revize edilebilir.</p>
+      <div class="contact-section">
+        <h2>İletişim</h2>
+        <p>Sorularınız veya silme talepleriniz için:</p>
+        <a href="mailto:plakentapp@gmail.com" class="contact-email">
+          📧 plakentapp@gmail.com
+        </a>
+      </div>
+    </div>
+
+    <div class="footer">
+      Bu sayfa yalnızca bilgilendirme amaçlıdır ve uygulamanın güncel özelliklerine göre revize edilebilir.
+    </div>
+  </div>
 </body>
 </html>
-
-
