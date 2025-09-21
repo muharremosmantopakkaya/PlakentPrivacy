@@ -2,8 +2,9 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8">
-  <title>Gizlilik Politikası – Plakent</title>
+  <title>🛡️ Gizlilik Politikası – Plakent</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -11,28 +12,73 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --secondary-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      --card-gradient: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --accent-blue: #3b82f6;
+      --accent-purple: #8b5cf6;
+      --white-alpha: rgba(255, 255, 255, 0.95);
+      --shadow-large: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --shadow-medium: 0 8px 25px -8px rgba(0, 0, 0, 0.2);
+      --border-light: rgba(255, 255, 255, 0.2);
+    }
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       line-height: 1.7;
-      color: #1e293b;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: var(--text-primary);
+      background: var(--primary-gradient);
       min-height: 100vh;
       padding: 20px;
+      overflow-x: hidden;
+    }
+
+    /* Animated Background Particles */
+    .bg-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .particle:nth-child(1) { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; }
+    .particle:nth-child(2) { width: 120px; height: 120px; top: 60%; left: 80%; animation-delay: 1s; }
+    .particle:nth-child(3) { width: 60px; height: 60px; top: 80%; left: 20%; animation-delay: 2s; }
+    .particle:nth-child(4) { width: 100px; height: 100px; top: 40%; left: 70%; animation-delay: 3s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
     }
 
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.95);
+      background: var(--white-alpha);
       backdrop-filter: blur(20px);
       border-radius: 24px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: var(--shadow-large);
+      border: 1px solid var(--border-light);
       overflow: hidden;
+      position: relative;
     }
 
+    /* Modern Header with Icons and Stats */
     .header {
-      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      background: var(--secondary-gradient);
       padding: 40px 40px 60px;
       color: white;
       position: relative;
@@ -44,11 +90,11 @@
       position: absolute;
       top: -50%;
       right: -20%;
-      width: 200px;
-      height: 200px;
+      width: 300px;
+      height: 300px;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 50%;
-      transform: rotate(45deg);
+      animation: pulse 4s ease-in-out infinite;
     }
 
     .header::after {
@@ -56,47 +102,108 @@
       position: absolute;
       bottom: -30%;
       left: -10%;
-      width: 150px;
-      height: 150px;
+      width: 200px;
+      height: 200px;
       background: rgba(255, 255, 255, 0.05);
       border-radius: 50%;
+      animation: pulse 4s ease-in-out infinite reverse;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.1) rotate(180deg); }
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
     }
 
     .header h1 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       font-weight: 800;
-      margin-bottom: 12px;
-      position: relative;
-      z-index: 1;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
-    .header .date {
+    .header-icon {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 12px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
+
+    .header-stats {
+      display: flex;
+      gap: 24px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .stat-badge {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .date {
       font-size: 1rem;
       opacity: 0.9;
       font-weight: 500;
-      position: relative;
-      z-index: 1;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
+    /* Content Area */
     .content {
       padding: 40px;
     }
 
     .intro {
       font-size: 1.1rem;
-      color: #475569;
+      color: var(--text-secondary);
       margin-bottom: 40px;
-      padding: 24px;
-      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-      border-radius: 16px;
-      border-left: 4px solid #3b82f6;
+      padding: 32px;
+      background: var(--card-gradient);
+      border-radius: 20px;
+      border-left: 5px solid var(--accent-blue);
+      position: relative;
+      overflow: hidden;
     }
 
+    .intro::before {
+      content: '🛡️';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2rem;
+      opacity: 0.3;
+    }
+
+    /* Modern Section Cards */
     .section {
-      margin-bottom: 36px;
+      margin-bottom: 32px;
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e2e8f0;
       opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.6s ease forwards;
+      transform: translateY(30px);
+      animation: slideInUp 0.8s ease forwards;
+      position: relative;
+      overflow: hidden;
     }
 
     .section:nth-child(2) { animation-delay: 0.1s; }
@@ -105,148 +212,272 @@
     .section:nth-child(5) { animation-delay: 0.4s; }
     .section:nth-child(6) { animation-delay: 0.5s; }
     .section:nth-child(7) { animation-delay: 0.6s; }
+    .section:nth-child(8) { animation-delay: 0.7s; }
+    .section:nth-child(9) { animation-delay: 0.8s; }
 
-    @keyframes fadeInUp {
+    @keyframes slideInUp {
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--secondary-gradient);
+      border-radius: 20px 20px 0 0;
+    }
+
     .section h2 {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      color: #1e293b;
-      margin-bottom: 16px;
+      color: var(--text-primary);
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
-    .section h2::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-      border-radius: 50%;
-      flex-shrink: 0;
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--secondary-gradient);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.1rem;
     }
 
+    /* Modern List Styling */
     .section ul {
       list-style: none;
       margin-left: 0;
+      display: grid;
+      gap: 16px;
     }
 
     .section li {
-      margin-bottom: 12px;
-      padding-left: 24px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: 12px;
       position: relative;
-      color: #475569;
-      transition: transform 0.2s ease;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--accent-blue);
     }
 
     .section li:hover {
-      transform: translateX(4px);
+      transform: translateX(8px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
     }
 
     .section li::before {
-      content: '→';
+      content: '✓';
       position: absolute;
-      left: 0;
-      color: #3b82f6;
+      left: -2px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background: var(--accent-blue);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
       font-weight: bold;
-      transition: transform 0.2s ease;
-    }
-
-    .section li:hover::before {
-      transform: translateX(4px);
     }
 
     .section p {
-      color: #475569;
+      color: var(--text-secondary);
       margin-bottom: 16px;
+      line-height: 1.8;
     }
 
     strong {
-      color: #1e293b;
+      color: var(--text-primary);
       font-weight: 600;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
+    /* Enhanced Links */
     a {
-      color: #3b82f6;
+      color: var(--accent-blue);
       text-decoration: none;
       font-weight: 500;
-      padding: 4px 8px;
-      border-radius: 6px;
-      transition: all 0.2s ease;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    a:hover::before {
+      left: 100%;
     }
 
     a:hover {
       background: #eff6ff;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
     }
 
+    /* Enhanced Contact Section */
     .contact-section {
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      padding: 32px;
-      border-radius: 16px;
+      background: var(--card-gradient);
+      padding: 40px;
+      border-radius: 20px;
       border: 1px solid #e2e8f0;
-      margin-top: 32px;
+      margin-top: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: '💬';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2.5rem;
+      opacity: 0.3;
     }
 
     .contact-section h2 {
-      color: #1e293b;
-      margin-bottom: 16px;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      font-size: 1.4rem;
     }
 
     .contact-email {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
       background: white;
-      padding: 12px 20px;
-      border-radius: 12px;
+      padding: 16px 24px;
+      border-radius: 16px;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      transition: all 0.2s ease;
-      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      font-weight: 600;
+      font-size: 1.1rem;
     }
 
     .contact-email:hover {
-      box-shadow: 0 8px 25px -8px rgba(0, 0, 0, 0.2);
-      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+      transform: translateY(-4px);
+      border-color: var(--accent-blue);
     }
 
+    .contact-email i {
+      font-size: 1.2rem;
+      color: var(--accent-blue);
+    }
+
+    /* Modern Footer */
     .footer {
-      padding: 24px 40px;
-      background: #f8fafc;
-      border-top: 1px solid #e2e8f0;
-      color: #64748b;
+      padding: 32px 40px;
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      color: #94a3b8;
       font-size: 0.9rem;
       text-align: center;
+      position: relative;
     }
 
-    .divider {
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+      background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+    }
+
+    /* Divider Enhancement */
+    .divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-blue), var(--accent-purple), transparent);
+      margin: 40px 0;
+      border-radius: 2px;
+    }
+
+    /* Quick Stats Cards */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
       margin: 32px 0;
     }
 
+    .stat-card {
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      background: var(--secondary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-top: 8px;
+    }
+
+    /* Mobile Responsive */
     @media (max-width: 768px) {
       .header, .content {
         padding: 24px;
       }
       
       .header h1 {
-        font-size: 2rem;
-      }
-      
-      .intro-highlights {
+        font-size: 2.2rem;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        gap: 12px;
       }
       
-      .highlight {
-        text-align: center;
+      .header-stats {
+        flex-direction: column;
+        gap: 12px;
       }
       
       .contact-section {
@@ -254,49 +485,135 @@
       }
       
       .footer {
-        padding: 20px 24px;
+        padding: 24px;
+      }
+
+      .section {
+        padding: 24px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
       }
     }
 
-    /* Smooth scroll behavior */
+    /* Smooth Animations */
     html {
       scroll-behavior: smooth;
     }
 
-    /* Custom scrollbar */
+    /* Enhanced Scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
+      width: 12px;
     }
 
     ::-webkit-scrollbar-track {
       background: #f1f5f9;
+      border-radius: 6px;
     }
 
     ::-webkit-scrollbar-thumb {
-      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-      border-radius: 4px;
+      background: var(--secondary-gradient);
+      border-radius: 6px;
+      border: 2px solid #f1f5f9;
     }
 
     ::-webkit-scrollbar-thumb:hover {
       background: linear-gradient(135deg, #2563eb, #7c3aed);
     }
+
+    /* Loading Animation */
+    .loading-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--secondary-gradient);
+      z-index: 9999;
+      animation: loading 3s ease-out forwards;
+    }
+
+    @keyframes loading {
+      0% { width: 0%; }
+      50% { width: 70%; }
+      100% { width: 100%; opacity: 0; }
+    }
   </style>
 </head>
 <body>
+  <!-- Animated Background -->
+  <div class="bg-particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <!-- Loading Bar -->
+  <div class="loading-bar"></div>
+
   <div class="container">
+    <!-- Enhanced Header -->
     <div class="header">
-      <h1>Gizlilik Politikası</h1>
-      <div class="date">Son güncelleme: 12 Eylül 2025</div>
+      <div class="header-content">
+        <h1>
+          <div class="header-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          Gizlilik Politikası
+        </h1>
+        <div class="date">
+          <i class="fas fa-calendar-alt"></i>
+          Son güncelleme: 21 Eylül 2025
+        </div>
+        <div class="header-stats">
+          <div class="stat-badge">
+            <i class="fas fa-check-circle"></i>
+            GDPR Uyumlu
+          </div>
+          <div class="stat-badge">
+            <i class="fas fa-lock"></i>
+            TLS Şifreli
+          </div>
+          <div class="stat-badge">
+            <i class="fas fa-user-shield"></i>
+            Güvenli
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="content">
+      <!-- Enhanced Intro -->
       <div class="intro">
         Bu gizlilik politikası, <strong>Plakent</strong> (bundan sonra "Uygulama") içinde işlenen 
         kişisel/kişisel olmayan verilerin hangi amaçlarla ve nasıl kullanıldığını açıklar.
       </div>
 
+      <!-- Quick Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Veri Satışı</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Şeffaflık</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">7/24</div>
+          <div class="stat-label">Güvenlik</div>
+        </div>
+      </div>
+
+      <!-- Enhanced Sections -->
       <div class="section">
-        <h2>Topladığımız Veriler</h2>
+        <h2>
+          <div class="section-icon">
+            <i class="fas fa-database"></i>
+          </div>
+          Topladığımız Veriler
+        </h2>
         <ul>
           <li><strong>Kullanıcı adı (opsiyonel):</strong> Uygulama içi skor tablosu ve kişiselleştirme için kullanıcı tarafından girilebilir. Boş bırakılabilir.</li>
           <li><strong>Quiz verileri:</strong> Doğru/yanlış cevaplar, toplam skor, ilerleme ve başarı oranları.</li>
@@ -306,7 +623,12 @@
       </div>
 
       <div class="section">
-        <h2>İşleme Amaçları</h2>
+        <h2>
+          <div class="section-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          İşleme Amaçları
+        </h2>
         <ul>
           <li>Uygulama işlevselliği (skor kaydı, ilerleme takibi, liderlik/puanlama).</li>
           <li>Reklam gösterimi ve kişiselleştirme (quiz bitişlerinde geçiş reklamları, can kazanma reklamları).</li>
@@ -316,7 +638,12 @@
       </div>
 
       <div class="section">
-        <h2>Veri Saklama ve Güvenlik</h2>
+        <h2>
+          <div class="section-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          Veri Saklama ve Güvenlik
+        </h2>
         <ul>
           <li>Veriler <strong>Supabase</strong> üzerinde saklanır. Aktarım sırasında TLS ile şifrelenir.</li>
           <li>Yetkisiz erişimi önlemek için erişim kontrolleri uygulanır.</li>
@@ -325,7 +652,12 @@
       </div>
 
       <div class="section">
-        <h2>Üçüncü Taraflarla Paylaşım</h2>
+        <h2>
+          <div class="section-icon">
+            <i class="fas fa-share-alt"></i>
+          </div>
+          Üçüncü Taraflarla Paylaşım
+        </h2>
         <p>Veriler <strong>satılmaz veya üçüncü taraflarla pazarlama amacıyla paylaşılmaz</strong>. Aşağıdaki durumlarda sınırlı veri paylaşımı yapılır:</p>
         <ul>
           <li><strong>Supabase:</strong> Uygulama verilerinin güvenli saklanması için.</li>
@@ -335,7 +667,12 @@
       </div>
 
       <div class="section">
-        <h2>Haklarınız</h2>
+        <h2>
+          <div class="section-icon">
+            <i class="fas fa-user-check"></i>
+          </div>
+          Haklarınız
+        </h2>
         <ul>
           <li>Verilerinize erişme, düzeltme veya silme talep etme hakkınız vardır.</li>
           <li>Reklam kişiselleştirmesini cihaz ayarlarından devre dışı bırakabilirsiniz.</li>
@@ -345,34 +682,86 @@
       </div>
 
       <div class="section">
-        <h2>Reklam Onayı ve Tercihler</h2>
+        <h2>
+          <div class="section-icon">
+            <i class="fas fa-ad"></i>
+          </div>
+          Reklam Onayı ve Tercihler
+        </h2>
         <p>Uygulama, reklam gösterimi için kullanıcı onayı alır. Reklam tercihlerinizi istediğiniz zaman değiştirebilir veya reklam kişiselleştirmesini devre dışı bırakabilirsiniz. Reklamlar, oyun deneyimini geliştirmek ve uygulamanın sürdürülebilirliğini sağlamak amacıyla gösterilir.</p>
       </div>
 
       <div class="section">
-        <h2>Çocukların Gizliliği</h2>
+        <h2>
+          <div class="section-icon">
+            <i class="fas fa-child"></i>
+          </div>
+          Çocukların Gizliliği
+        </h2>
         <p>Uygulama 13 yaş altına özel olarak pazarlanmaz. Ebeveyn izni olmaksızın çocuklardan bilerek kişisel veri toplamamaya özen gösteririz. Reklam gösterimi için yaş uygunluğu kontrol edilir.</p>
       </div>
 
       <div class="section">
-        <h2>Değişiklikler</h2>
+        <h2>
+          <div class="section-icon">
+            <i class="fas fa-sync-alt"></i>
+          </div>
+          Değişiklikler
+        </h2>
         <p>Bu politika zaman zaman güncellenebilir. Önemli değişiklikleri uygulama içinden veya bu sayfa üzerinden duyururuz.</p>
       </div>
 
       <div class="divider"></div>
 
+      <!-- Enhanced Contact Section -->
       <div class="contact-section">
-        <h2>İletişim</h2>
+        <h2>
+          <i class="fas fa-envelope"></i>
+          İletişim
+        </h2>
         <p>Sorularınız veya silme talepleriniz için:</p>
         <a href="mailto:plakentapp@gmail.com" class="contact-email">
-          📧 plakentapp@gmail.com
+          <i class="fas fa-paper-plane"></i>
+          plakentapp@gmail.com
         </a>
       </div>
     </div>
 
+    <!-- Enhanced Footer -->
     <div class="footer">
+      <i class="fas fa-info-circle"></i>
       Bu sayfa yalnızca bilgilendirme amaçlıdır ve uygulamanın güncel özelliklerine göre revize edilebilir.
     </div>
   </div>
+
+  <script>
+    // Smooth scroll for better UX
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Add intersection observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
