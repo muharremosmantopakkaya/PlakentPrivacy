@@ -8,7 +8,7 @@
 
 **🎯 Modern, Güvenli ve Kullanıcı Dostu Gizlilik Politikası**
 
-[📖 Canlı Görüntüle](https://muharremosmantopakkaya.github.io/PlakentPrivacy/) • [📧 İletişim](mailto:plakentapp@gmail.com) 
+[📖 Canlı Görüntüle](https://muharremosmantopakkaya.github.io/PlakentPrivacy/policy.html) • [📧 İletişim](mailto:plakentapp@gmail.com) 
 
 </div>
 
@@ -254,7 +254,7 @@ Konu: Gizlilik Politikası - [Talebiniz]
 
 | 🔗 Link | Açıklama |
 |:---:|:---|
-| [📖 **Canlı Politika**](https://muharremosmantopakkaya.github.io/PlakentPrivacy/) | Web tabanlı görüntüleme |
+| [📖 **Canlı Politika**](https://muharremosmantopakkaya.github.io/PlakentPrivacy/policy.html) | Web tabanlı görüntüleme |
 | [📧 **Email**](mailto:plakentapp@gmail.com) | Doğrudan iletişim |
 | [📱 **Uygulama**](https://play.google.com/store/apps/details?id=com.plakent.app) | Google Play Store |
 
