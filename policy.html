@@ -300,7 +300,8 @@
         <ul>
           <li><strong>Kullanıcı adı (opsiyonel):</strong> Uygulama içi skor tablosu ve kişiselleştirme için kullanıcı tarafından girilebilir. Boş bırakılabilir.</li>
           <li><strong>Quiz verileri:</strong> Doğru/yanlış cevaplar, toplam skor, ilerleme ve başarı oranları.</li>
-          <li><strong>Cihaz verileri:</strong> Reklam/analitik SDK'ları kullanılmadığından cihaz kimliği, konum, kişi listesi vb. toplanmaz.</li>
+          <li><strong>Reklam verileri:</strong> AdMob reklam sistemi aracılığıyla reklam kimliği, reklam etkileşim verileri ve reklam performans metrikleri toplanır.</li>
+          <li><strong>Cihaz verileri:</strong> Reklam kişiselleştirmesi için cihaz kimliği, konum (genel), dil tercihi ve uygulama kullanım verileri toplanabilir.</li>
         </ul>
       </div>
 
@@ -308,6 +309,8 @@
         <h2>İşleme Amaçları</h2>
         <ul>
           <li>Uygulama işlevselliği (skor kaydı, ilerleme takibi, liderlik/puanlama).</li>
+          <li>Reklam gösterimi ve kişiselleştirme (quiz bitişlerinde geçiş reklamları, can kazanma reklamları).</li>
+          <li>Reklam performans analizi ve optimizasyonu.</li>
           <li>Hata giderme ve güvenilirlik (sınırlı teknik kayıtlara başvurulabilir).</li>
         </ul>
       </div>
@@ -323,20 +326,32 @@
 
       <div class="section">
         <h2>Üçüncü Taraflarla Paylaşım</h2>
-        <p>Veriler <strong>satılmaz veya üçüncü taraflarla pazarlama amacıyla paylaşılmaz</strong>. Yalnızca hizmeti sağlamak için gerekli barındırma/altyapı sağlayıcıları (Supabase vb.) ile sınırlı teknik işleme yapılır.</p>
+        <p>Veriler <strong>satılmaz veya üçüncü taraflarla pazarlama amacıyla paylaşılmaz</strong>. Aşağıdaki durumlarda sınırlı veri paylaşımı yapılır:</p>
+        <ul>
+          <li><strong>Supabase:</strong> Uygulama verilerinin güvenli saklanması için.</li>
+          <li><strong>Google AdMob:</strong> Reklam gösterimi, kişiselleştirme ve performans analizi için reklam kimliği ve etkileşim verileri.</li>
+          <li><strong>Google Play Services:</strong> Reklam kimliği ve cihaz bilgileri reklam ağları ile paylaşılabilir.</li>
+        </ul>
       </div>
 
       <div class="section">
         <h2>Haklarınız</h2>
         <ul>
           <li>Verilerinize erişme, düzeltme veya silme talep etme hakkınız vardır.</li>
+          <li>Reklam kişiselleştirmesini cihaz ayarlarından devre dışı bırakabilirsiniz.</li>
+          <li>Reklam kimliğini sıfırlama veya reklam tercihlerini değiştirme hakkınız vardır.</li>
           <li>Silme talebi için aşağıdaki iletişim adresinden bize ulaşabilirsiniz. Makul süre içinde yanıtlanır.</li>
         </ul>
       </div>
 
       <div class="section">
+        <h2>Reklam Onayı ve Tercihler</h2>
+        <p>Uygulama, reklam gösterimi için kullanıcı onayı alır. Reklam tercihlerinizi istediğiniz zaman değiştirebilir veya reklam kişiselleştirmesini devre dışı bırakabilirsiniz. Reklamlar, oyun deneyimini geliştirmek ve uygulamanın sürdürülebilirliğini sağlamak amacıyla gösterilir.</p>
+      </div>
+
+      <div class="section">
         <h2>Çocukların Gizliliği</h2>
-        <p>Uygulama 13 yaş altına özel olarak pazarlanmaz. Ebeveyn izni olmaksızın çocuklardan bilerek kişisel veri toplamamaya özen gösteririz.</p>
+        <p>Uygulama 13 yaş altına özel olarak pazarlanmaz. Ebeveyn izni olmaksızın çocuklardan bilerek kişisel veri toplamamaya özen gösteririz. Reklam gösterimi için yaş uygunluğu kontrol edilir.</p>
       </div>
 
       <div class="section">
