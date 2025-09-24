@@ -8,7 +8,7 @@
 
 **🎯 Modern, Güvenli ve Kullanıcı Dostu Gizlilik Politikası**
 
-[📖 Canlı Görüntüle](https://muharremosmantopakkaya.github.io/PlakentPrivacy/) • [📧 İletişim](mailto:plakentapp@gmail.com) 
+[📖 Canlı Görüntüle](https://muharremosmantopakkaya.github.io/PlakentPrivacy/policy.html) • [📧 İletişim](mailto:plakentapp@gmail.com) 
 
 </div>
 
@@ -63,10 +63,14 @@ graph TD
     E --> G[📈 Skor Tablosu]
     F --> H[🎪 Kişisel Reklamlar]
     
-    style A fill:#e1f5fe
-    style B fill:#f3e5f5
-    style E fill:#e8f5e8
-    style F fill:#fff3e0
+    style A fill:#e1f5fe,stroke:#333,stroke-width:2px,color:#000
+    style B fill:#f3e5f5,stroke:#333,stroke-width:2px,color:#000
+    style C fill:#fff,stroke:#333,stroke-width:2px,color:#000
+    style D fill:#fff,stroke:#333,stroke-width:2px,color:#000
+    style E fill:#e8f5e8,stroke:#333,stroke-width:2px,color:#000
+    style F fill:#fff3e0,stroke:#333,stroke-width:2px,color:#000
+    style G fill:#fff,stroke:#333,stroke-width:2px,color:#000
+    style H fill:#fff,stroke:#333,stroke-width:2px,color:#000
 ```
 
 ---
@@ -254,7 +258,7 @@ Konu: Gizlilik Politikası - [Talebiniz]
 
 | 🔗 Link | Açıklama |
 |:---:|:---|
-| [📖 **Canlı Politika**](https://muharremosmantopakkaya.github.io/PlakentPrivacy/) | Web tabanlı görüntüleme |
+| [📖 **Canlı Politika**](https://muharremosmantopakkaya.github.io/PlakentPrivacy/policy.html) | Web tabanlı görüntüleme |
 | [📧 **Email**](mailto:plakentapp@gmail.com) | Doğrudan iletişim |
 | [📱 **Uygulama**](https://play.google.com/store/apps/details?id=com.plakent.app) | Google Play Store |
 
